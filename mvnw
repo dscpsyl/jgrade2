@@ -76,7 +76,7 @@ if [ -z "$JAVA_HOME" ] ; then
 fi
 
 # For Cygwin, ensure paths are in UNIX format before anything is touched
-if $cygwin ; then
+if "$cygwin" ; then
   [ -n "$JAVA_HOME" ] &&
     JAVA_HOME=$(cygpath --unix "$JAVA_HOME")
   [ -n "$CLASSPATH" ] &&
@@ -84,7 +84,7 @@ if $cygwin ; then
 fi
 
 # For Mingw, ensure paths are in UNIX format before anything is touched
-if $mingw ; then
+if "$mingw" ; then
   [ -n "$JAVA_HOME" ] && [ -d "$JAVA_HOME" ] &&
     JAVA_HOME="$(cd "$JAVA_HOME" || (echo "cannot cd into $JAVA_HOME."; exit 1); pwd)"
 fi
@@ -95,7 +95,7 @@ if [ -z "$JAVA_HOME" ]; then
     # readlink(1) is not available as standard on Solaris 10.
     readLink=$(which readlink)
     if [ ! "$(expr "$readLink" : '\([^ ]*\)')" = "no" ]; then
-      if $darwin ; then
+      if "$darwin" ; then
         javaHome="$(dirname "\"$javaExecutable\"")"
         javaExecutable="$(cd "\"$javaHome\"" && pwd -P)/javac"
       else
@@ -149,7 +149,7 @@ find_maven_basedir() {
       break
     fi
     # workaround for JBEAP-8937 (on Solaris 10/Sparc)
-    if [ -d "${wdir}" ]; then
+    if [ -d "$wdir" ]; then
       wdir=$(cd "$wdir/.." || exit 1; pwd)
     fi
     # end of workaround
@@ -206,7 +206,7 @@ else
     done < "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
     log "Downloading from: $wrapperUrl"
 
-    if $cygwin; then
+    if "$cygwin"; then
       wrapperJarPath=$(cygpath --path --windows "$wrapperJarPath")
     fi
 
@@ -231,7 +231,7 @@ else
         javaSource="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java"
         javaClass="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.class"
         # For Cygwin, switch paths to Windows format before running javac
-        if $cygwin; then
+        if "$cygwin"; then
           javaSource=$(cygpath --path --windows "$javaSource")
           javaClass=$(cygpath --path --windows "$javaClass")
         fi
@@ -272,7 +272,7 @@ if [ -n "$wrapperSha256Sum" ]; then
     echo "Please install either command, or disable validation by removing 'wrapperSha256Sum' from your maven-wrapper.properties."
     exit 1
   fi
-  if [ $wrapperSha256Result = false ]; then
+  if [ "$wrapperSha256Result" = false ]; then
     echo "Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised." >&2
     echo "Investigate or delete $wrapperJarPath to attempt a clean download." >&2
     echo "If you updated your Maven version, you need to update the specified wrapperSha256Sum property." >&2
@@ -283,7 +283,7 @@ fi
 MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
 
 # For Cygwin, switch paths to Windows format before running java
-if $cygwin; then
+if "$cygwin"; then
   [ -n "$JAVA_HOME" ] &&
     JAVA_HOME=$(cygpath --path --windows "$JAVA_HOME")
   [ -n "$CLASSPATH" ] &&
@@ -301,8 +301,8 @@ WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
 # shellcheck disable=SC2086 # safe args
 exec "$JAVACMD" \
-  $MAVEN_OPTS \
-  $MAVEN_DEBUG_OPTS \
+  "$MAVEN_OPTS" \
+  "$MAVEN_DEBUG_OPTS" \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
-  "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
-  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+  "-Dmaven.multiModuleProjectDirectory=$MAVEN_PROJECTBASEDIR" \
+  "$WRAPPER_LAUNCHER" "$MAVEN_CONFIG" "$@"

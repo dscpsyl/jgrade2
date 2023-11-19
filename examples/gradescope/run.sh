@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # make cwd the compiled class files
-cd classes
+cd classes || exit
 
 # invoke the main program of JGrade passing the class GradeHello as the main parameter
 # sending output to the results.json file (or stdout if running locally).

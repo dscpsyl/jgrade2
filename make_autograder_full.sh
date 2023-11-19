@@ -12,7 +12,7 @@ echo "Copying jGrade2 jar file to examples/gradescope/lib/..."
 cp target/jgrade2-2.0.0-a2-all.jar examples/gradescope/lib/
 
 echo "Zipping up autograder files..."
-cd examples/gradescope
+cd examples/gradescope || exit
 zip -r autograder.zip lib/ res/ src/ compile.sh run.sh setup.sh run_autograder
 mv autograder.zip zips/
 

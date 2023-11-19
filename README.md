@@ -8,6 +8,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -30,8 +31,6 @@
     <a href="https://github.com/dscpsyl/jgrade2/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -65,26 +64,23 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
-This is an update to the original jGrade, now supporting Java17 and [JUnit5](https://junit.org/junit5/). This provides four 
-annotations: `@Grade` (+ `@BeforeGrading` and `@AfterGrading`) and `@GradedTest`, each meant to help autograde 
-student assignments in Java for the Gradescope autograder. When correctly setup, instructors can 
-simply use JUnit5 to write tests for assignemnts. This library will automatically capture results, 
+This is an update to the original jGrade, now supporting Java17 and [JUnit5](https://junit.org/junit5/). This provides four
+annotations: `@Grade` (+ `@BeforeGrading` and `@AfterGrading`) and `@GradedTest`, each meant to help autograde
+student assignments in Java for the Gradescope autograder. When correctly setup, instructors can
+simply use JUnit5 to write tests for assignemnts. This library will automatically capture results,
 and output the correct json format for Gradescope to read.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ## Getting Started
 
 ### Prerequisites
 
-jGrade2 requires Java 17 and JUnit5. It is recommended to use Maven to manage dependencies. Additional 
+jGrade2 requires Java 17 and JUnit5. It is recommended to use Maven to manage dependencies. Additional
 dependencies are listed in the `pom.xml` file. For the user's convenience, a `jar` file is provided
 containing all the dependencies.
 
@@ -108,18 +104,16 @@ There are two ways to install jGrade2.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ## Usage
 
 Usage is nearly identical to the origional [jGrade](https://github.com/tkutcher/jgrade). jGrade2 comes with a commandline
 to run the grader manually. This is useful for debugging and testing. After compiling, you can use
 
-```java -jar jGrade2.jar -h```
+`java -jar jGrade2.jar -h`
 
 for help and options of the commandline. However, a typical usage would be
 
-```java -jar jGrade2.jar -c ExampleGrading -o results.json```
+`java -jar jGrade2.jar -c ExampleGrading -o results.json`
 
 ### Test Writting and Grading
 
@@ -128,7 +122,7 @@ You can take a look at the gradescope example in `examples/gradescope` for a ful
 #### Tests
 
 Tests are written in jUnit5. The only addition will be the `@GradedTest` annotation to each test that should be counted in the
-assignment on gradescope. 
+assignment on gradescope.
 
 ```java
 import org.junit.jupiter.api.Test;
@@ -161,6 +155,7 @@ public class ExampleTest {
 ```
 
 The `@GradedTest` annotation has the following parameters:
+
 - `name` - The name of the test. This will be displayed in the Gradescope interface. DEFAUT: "Unnamed test"
 - `number` - The test number in a string. This will be displayed in the Gradescope interface. DEFAULT: ""
 - `points` - The number of points this test is worth. DEFAULT: 1.0
@@ -171,7 +166,7 @@ The `@GradedTest` annotation has the following parameters:
 Grading is done by a simple grading class. This class should be in the same package as the tests. Each method in the grading class
 that should be considered for grading needs to be annotated with `@Grade`. The method should take in a single parameter of type
 `Grader`. `@BeforeGrading` and `AfterGrading` can be used to run code before and after grading respectively. These methods should
-also take in a single parameter of type `Grader`. 
+also take in a single parameter of type `Grader`.
 
 ```java
 import com.github.dscpsyl.jgrade2.Grader;
@@ -225,47 +220,47 @@ public class ExampleGrading {
 
 There is a full example in `examples/gradescope` that works on gradescope, and models much of the setup from the original [java example](https://github.com/gradescope/autograder_samples/tree/master/java) Gradescope links to.
 
-It compiles all files in to a created `classes/` directory (not tracked). All the scripts will be looking for your classes in this directory. 
+It compiles all files in to a created `classes/` directory (not tracked). All the scripts will be looking for your classes in this directory.
 
-The `lib/` folder contains all jars and library files needed to run your test - for this example just the jGrade2 jar file (optionally a checkstyle jar for the checkstyle grading method). The `res/` directory is for resources (like the checkstyle configuration file). 
+The `lib/` folder contains all jars and library files needed to run your test - for this example just the jGrade2 jar file (optionally a checkstyle jar for the checkstyle grading method). The `res/` directory is for resources (like the checkstyle configuration file).
 
 `src/` is the main source code of both your grading code and your tests.
 
- `test_submissions/` are submissions to test with on Gradescope. These are precompiled for you to test with the grader that is included in the example.
+`test_submissions/` are submissions to test with on Gradescope. These are precompiled for you to test with the grader that is included in the example.
 
- The source has 2 main packages, `staff` and `student`. The staff package contains the unit tests, a solution (to debug with) and the code to do the grading. The student package contains studnet skeleton code for studnets to fill in.
+The source has 2 main packages, `staff` and `student`. The staff package contains the unit tests, a solution (to debug with) and the code to do the grading. The student package contains studnet skeleton code for studnets to fill in.
 
- While debugging, a makefile is provided for compiling and running. `make output` will start fresh and run the autograder, pretty-printing the output to the console.
+While debugging, a makefile is provided for compiling and running. `make output` will start fresh and run the autograder, pretty-printing the output to the console.
 
- - `setup.sh`: Installs correct JDK
- - `run_autograder`: Main script for the autograder. Copies in submission, compiles, and runs.
- - `compile.sh`: Compiles all of the source into a classes directory
- - `run.sh`: Runs JGrade, passing in the `GradeHello` file, writing output
-   - If run with `--local` then prints output to console, else to the results/results.json file.
+- `setup.sh`: Installs correct JDK
+- `run_autograder`: Main script for the autograder. Copies in submission, compiles, and runs.
+- `compile.sh`: Compiles all of the source into a classes directory
+- `run.sh`: Runs JGrade, passing in the `GradeHello` file, writing output
+  - If run with `--local` then prints output to console, else to the results/results.json file.
 
- #### To build the Autograder:
- Either:
+#### To build the Autograder:
 
- 1. Run `./mvnw clean package` to build the jGrade2 jar
- 2. Copy the jGrade2 jar to the `lib/` folder
- 3. Run either `./make_autograder.sh` or `make autograder` which will place it in the `zips/` folder.
- 4. Upload the autograder to Gradescope.
+Either:
 
- Or:
+1.  Run `./mvnw clean package` to build the jGrade2 jar
+2.  Copy the jGrade2 jar to the `lib/` folder
+3.  Run either `./make_autograder.sh` or `make autograder` which will place it in the `zips/` folder.
+4.  Upload the autograder to Gradescope.
 
- 1. Run `./make_autograder_full.sh` which will complete the steps above for you, assuming the gradescope files are still in the `examples` directory. This will put the final zip in the base directory instead of the `zips/` folder. If you want to include checkstyle in the grading, please manually add the checkstyle jar to the `lib/` folder before running this script.
+Or:
 
-
+1.  Run `./make_autograder_full.sh` which will complete the steps above for you, assuming the gradescope files are still in the `examples` directory. This will put the final zip in the base directory instead of the `zips/` folder. If you want to include checkstyle in the grading, please manually add the checkstyle jar to the `lib/` folder before running this script.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 The repository is structured like so:
+
 - `main & master` The main branches for publishing to maven central. These should be kept clean and only update with releases. It is also protected and can only be added to via a pull request.
 - `dev` The development branch. This is where all development should be done and contains pe-releases. It is protected and can only be added to via a pull request.
 
@@ -282,30 +277,27 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-* This is an update of the original [jGrade](https://github.com/tkutcher/jgrade).
-* Originally developed by [dscpsyl](https://github.com/dscpsyl) and directed by [pconrad](https://github.com/pconrad)
-* Maintained by the CMPSC 192 course staff and students at University of California, Santa Barbara
+- This is an update of the original [jGrade](https://github.com/tkutcher/jgrade).
+- Originally developed by [dscpsyl](https://github.com/dscpsyl) and directed by [pconrad](https://github.com/pconrad)
+- Maintained by the CMPSC 192 course staff and students at University of California, Santa Barbara
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/dscpsyl/jgrade2.svg?style=for-the-badge
 [contributors-url]: https://github.com/dscpsyl/jgrade2/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/dscpsyl/jgrade2.svg?style=for-the-badge

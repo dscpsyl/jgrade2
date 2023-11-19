@@ -428,7 +428,7 @@
                             </goals>
                             </execution>
                         </executions>
-                    </plugin>   
+                    </plugin>
                     <plugin>
                         <groupId>org.jreleaser</groupId>
                         <artifactId>jreleaser-maven-plugin</artifactId>

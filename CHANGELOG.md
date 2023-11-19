@@ -11,7 +11,6 @@
 
 _These new formats are from >2.0.0 (alpha-1)_
 
-
 ### v2.0.0
 
 #### Added
@@ -24,7 +23,6 @@ _These new formats are from >2.0.0 (alpha-1)_
 
 - Maven Wrapper is now being used to build the project
 - Detailed `README.md` with instructions on how to use the project
-
 
 #### Changed
 

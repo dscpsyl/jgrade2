@@ -1,8 +1,7 @@
 package com.github.dscpsyl.jgrade2;
 
-import java.util.List;
-
 import com.github.dscpsyl.jgrade2.gradedtest.GradedTestResult;
+import java.util.List;
 
 /**
  * Interface for the strategy design pattern on top of a {@link Grader} object.
@@ -12,11 +11,11 @@ import com.github.dscpsyl.jgrade2.gradedtest.GradedTestResult;
  */
 public interface GraderStrategy {
 
-    /**
-     * Do work on the list of {@link GradedTestResult}s before they get
-     * added to the overall list of tests.
-     * @param l The list of {@link GradedTestResult}s to modify (or not
-     *          in the case of the default strategy).
-     */
-    void grade(List<GradedTestResult> l);
+  /**
+   * Do work on the list of {@link GradedTestResult}s before they get
+   * added to the overall list of tests.
+   * @param l The list of {@link GradedTestResult}s to modify (or not
+   *          in the case of the default strategy).
+   */
+  void grade(List<GradedTestResult> l);
 }

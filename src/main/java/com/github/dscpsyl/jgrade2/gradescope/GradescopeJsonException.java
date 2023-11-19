@@ -6,11 +6,9 @@ package com.github.dscpsyl.jgrade2.gradescope;
  */
 public class GradescopeJsonException extends RuntimeException {
 
-    /**
-     * Create an instance of this exception.
-     * @param message The message for what caused the exception.
-     */
-    public GradescopeJsonException(String message) {
-        super(message);
-    }
+  /**
+   * Create an instance of this exception.
+   * @param message The message for what caused the exception.
+   */
+  public GradescopeJsonException(String message) { super(message); }
 }

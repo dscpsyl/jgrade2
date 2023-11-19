@@ -5,10 +5,10 @@ package com.github.dscpsyl.jgrade2;
  */
 public interface OutputFormatter {
 
-    /**
-     * Get the formatted output of the grader.
-     * @param grader The grader observing.
-     * @return The formatted output.
-     */
-    String format(Grader grader);
+  /**
+   * Get the formatted output of the grader.
+   * @param grader The grader observing.
+   * @return The formatted output.
+   */
+  String format(Grader grader);
 }

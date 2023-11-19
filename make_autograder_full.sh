@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # This script is used to create the autograder.zip file for the autograder
-# submission on Gradescope. 
+# submission on Gradescope.
 echo "Creating autograder.zip file for Gradescope submission..."
 echo "--------------------------------------------------"
 
@@ -22,4 +22,3 @@ mv zips/autograder.zip ../../
 echo "Cleaning up..."
 rm lib/jgrade2-2.0.0-a2-all.jar
 cd ../..
-

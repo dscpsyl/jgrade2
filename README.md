@@ -70,6 +70,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+# This repo is now behind. Please visit the new organization and Github repo for [jGrade 2](https://github.com/jgrade2/jgrade2)
+
 This is an update to the original jGrade, now supporting Java17 and [JUnit5](https://junit.org/junit5/). This provides four 
 annotations: `@Grade` (+ `@BeforeGrading` and `@AfterGrading`) and `@GradedTest`, each meant to help autograde 
 student assignments in Java for the Gradescope autograder. When correctly setup, instructors can 
